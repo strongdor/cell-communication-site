@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Review Activity</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .quiz-container {
+            display: none;
+        }
+        .submit-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .thumbs-down {
+            position: fixed;
+            top: 50%;
+            left: -150px;
+            font-size: 150px;
+            color: red;
+            animation: thumbs-slide-in 2s forwards;
+            display: none;
+        }
+        @keyframes thumbs-slide-in {
+            0% {
+                left: -150px;
+                transform: translateY(0);
+            }
+            25% {
+                left: 50%;
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                left: 50%;
+                transform: translateX(-50%) translateY(-20px);
+            }
+            75% {
+                left: 50%;
+                transform: translateX(-50%) translateY(0);
+            }
+            100% {
+                left: 110%;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="secondary-header">
+        <div class="container">
+            <h1>Cell Communication and Homeostasis in Runners</h1>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pathway.html">Signal Transduction</a></li>
+                <li><a href="molecules.html">Key Molecules</a></li>
+                <li><a href="feedback.html">Feedback Mechanisms</a></li>
+                <li><a href="importance.html">Biological Importance</a></li>
+                <li><a href="review.html">Review Activity</a></li>
+                <li><a href="citations.html">Citations</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2>Interactive Review Activity</h2>
+                <p>Test your knowledge of cell communication and homeostasis with the quiz below. Answer one question at a time to see how much you've learned!</p>
+
+                <div id="quiz-container">
+                    <div id="question-1" class="quiz-container">
+                        <p><strong>1. What molecule is responsible for signaling blood vessels to dilate?</strong></p>
+                        <button class="submit-btn" onclick="nextQuestion(1, 'correct')">Nitric Oxide</button>
+                        <button class="submit-btn" onclick="attemptAgain(1, 'wrong')">Adrenaline</button>
+                        <button class="submit-btn" onclick="attemptAgain(1, 'wrong')">cAMP</button>
+                    </div>
+
+                    <div id="question-2" class="quiz-container">
+                        <p><strong>2. Which feedback mechanism reduces acidity in muscles during exercise?</strong></p>
+                        <button class="submit-btn" onclick="nextQuestion(2, 'correct')">Carnosine Buffering</button>
+                        <button class="submit-btn" onclick="attemptAgain(2, 'wrong')">Adrenaline Surge</button>
+                        <button class="submit-btn" onclick="attemptAgain(2, 'wrong')">Vasodilation</button>
+                    </div>
+
+                    <div id="question-3" class="quiz-container">
+                        <p><strong>3. What is the role of beta-alanine in runners?</strong></p>
+                        <button class="submit-btn" onclick="nextQuestion(3, 'correct')">Reduces Muscle Fatigue</button>
+                        <button class="submit-btn" onclick="attemptAgain(3, 'wrong')">Increases Oxygen Delivery</button>
+                        <button class="submit-btn" onclick="attemptAgain(3, 'wrong')">Blocks Adenosine</button>
+                    </div>
+                </div>
+
+                <div id="quiz-result" style="margin-top: 20px; font-weight: bold; display: none;"></div>
+            </div>
+        </section>
+
+        <div class="next-section-container">
+            <a class="next-section-btn" href="citations.html">Next Section →</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Cell Communication and Homeostasis in Runners. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <canvas id="confetti"></canvas>
+    <div id="thumbs-down" class="thumbs-down">👎</div>
+
+    <script>
+        let currentQuestion = 0;
+        const totalQuestions = 3;
+        let attempt = 0;
+
+        function nextQuestion(question, status) {
+            if (status === 'correct') {
+                triggerConfetti();
+                moveToNextQuestion(question);
+            } else if (status === 'wrong') {
+                triggerThumbsDown();
+                attempt = 0; // Reset attempt for the next question.
+            }
+        }
+
+        function attemptAgain(question, status) {
+            if (status === 'wrong' && attempt === 0) {
+                triggerThumbsDown();
+                attempt++;
+            } else {
+                nextQuestion(question, 'wrong');
+            }
+        }
+
+        function moveToNextQuestion(question) {
+            document.getElementById(`question-${question}`).style.display = 'none';
+            if (question < totalQuestions) {
+                document.getElementById(`question-${question + 1}`).style.display = 'block';
+            } else {
+                document.getElementById("quiz-result").style.display = 'block';
+                document.getElementById("quiz-result").textContent = "You completed the quiz! Great job!";
+            }
+        }
+
+        function triggerConfetti() {
+            const canvas = document.getElementById("confetti");
+            const ctx = canvas.getContext("2d");
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const confettiParticles = [];
+            const colors = ["#007BFF", "#6C757D", "#FFC107", "#28A745", "#DC3545"];
+
+            function createParticle() {
+                return {
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 5 + 2,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speedY: Math.random() * 3 + 2,
+                    speedX: (Math.random() - 0.5) * 2,
+                };
+            }
+
+            for (let i = 0; i < 200; i++) {
+                confettiParticles.push(createParticle());
+            }
+
+            function updateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                confettiParticles.forEach((particle) => {
+                    particle.y += particle.speedY;
+                    particle.x += particle.speedX;
+
+                    if (particle.y > canvas.height) {
+                        particle.y = -particle.size;
+                        particle.x = Math.random() * canvas.width;
+                    }
+
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fillStyle = particle.color;
+                    ctx.fill();
+                });
+                requestAnimationFrame(updateParticles);
+            }
+
+            updateParticles();
+
+            setTimeout(() => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                confettiParticles.length = 0;
+            }, 3000);
+        }
+
+        function triggerThumbsDown() {
+            const thumbsDown = document.getElementById("thumbs-down");
+            thumbsDown.style.display = "block";
+            thumbsDown.style.animation = "thumbs-slide-in 2s forwards";
+            setTimeout(() => {
+                thumbsDown.style.display = "none";
+            }, 2000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('question-1').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

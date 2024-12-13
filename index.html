@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cell Communication and Homeostasis in Runners</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .signal-image {
+            display: none;
+            margin-top: 10px;
+            max-width: 100%;
+            border: 2px solid black;
+        }
+
+        .signal-toggle {
+            cursor: pointer;
+            display: inline-block;
+            margin-left: 10px;
+            color: black;
+            text-decoration: none;
+        }
+
+        .signal-container {
+            position: relative;
+        }
+
+        .key-container {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .key-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .key-container li {
+            margin: 5px 0;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section with Video Background -->
+    <section id="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="cell.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Cell Communication and Homeostasis in Runners</h1>
+            <p>Exploring the Signaling Pathways Influenced by Caffeine, Dietary Nitrate, and Beta-Alanine</p>
+
+            <!-- Explore Button -->
+            <a href="#introduction" class="explore-btn">Explore ↓</a>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul>
+                <li><a href="pathway.html">Signal Transduction</a></li>
+                <li><a href="molecules.html">Key Molecules</a></li>
+                <li><a href="feedback.html">Feedback Mechanisms</a></li>
+                <li><a href="importance.html">Biological Importance</a></li>
+                <li><a href="review.html">Review Activity</a></li>
+                <li><a href="citations.html">Citations</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Introduction Section -->
+        <section class="section" id="introduction">
+            <div class="container">
+                <h2>Introduction to Cell Communication</h2>
+
+                <p><strong>Defining Cell Communication:</strong> Cell communication is the method by which cells detect, process, and respond to signals via their environment or another cell. It is essential to biological systems because it enables organisms to maintain homeostasis, a steady internal environment that is essential for survival.</p>
+
+                <p><strong>Importance for Endurance Runners:</strong> Cell communication is crucial for controlling oxygen delivery, neuronal activity, muscular performance, and metabolic balance in endurance athletes, particularly runners. The body uses efficient signaling to adjust to higher energy needs, maximize cardiovascular output, and minimize fatigue during a run.</p>
+
+                <p><strong>Key Roles in Exercise:</strong> During physical activity, several forms of cell communication work simultaneously to sustain performance:</p>
+                <div class="signal-container">
+                    <p><strong>Neuronal Signaling (local - synaptic signaling):</strong> The brain and nerves send messages to muscles, telling them when to contract and relax.
+                        <span class="signal-toggle" onclick="toggleSignal('neuronal')">▼</span>
+                    </p>
+                    <img id="neuronal" src="Neuronal Signaling.jpg" alt="Neuronal Signaling" class="signal-image">
+                </div>
+
+                <div class="signal-container">
+                    <p><strong>Paracrine Signaling (local - nearby cells):</strong> Nearby cells release substances like nitric oxide to improve blood flow to muscles.
+                        <span class="signal-toggle" onclick="toggleSignal('paracrine')">▼</span>
+                    </p>
+                    <img id="paracrine" src="Paracrine Signaling.jpg" alt="Paracrine Signaling" class="signal-image">
+                </div>
+
+                <div class="signal-container">
+                    <p><strong>Autocrine Signaling (self - same cell):</strong> Cells release signals that affect themselves, like muscle cells repairing themselves after exercise.
+                        <span class="signal-toggle" onclick="toggleSignal('autocrine')">▼</span>
+                    </p>
+                    <img id="autocrine" src="Autocrine Signaling.jpg" alt="Autocrine Signaling" class="signal-image">
+                </div>
+
+                <div class="signal-container">
+                    <p><strong>Endocrine Signaling (long-distance - through bloodstream):</strong> Hormones like adrenaline travel through the blood to prepare the body for action.
+                        <span class="signal-toggle" onclick="toggleSignal('endocrine')">▼</span>
+                    </p>
+                    <img id="endocrine" src="Endocrine Signaling.jpg" alt="Endocrine Signaling" class="signal-image">
+                </div>
+
+                <p><strong>Processes Overview:</strong> Substances that boost performance include:
+                <ul>
+                    <li><em><strong>Caffeine:</strong></em> Helps you stay alert by blocking signals in the brain that make you feel tired (adenosine signaling).</li>
+                    <li><em><strong>Dietary Nitrate:</strong></em> Found in foods like beets, it opens blood vessels to deliver more oxygen to muscles (via nitric oxide production).</li>
+                    <li><em><strong>Beta-Alanine:</strong></em> Reduces muscle fatigue by helping muscles handle the build-up of acids during exercise (buffering hydrogen ions).</li>
+                </ul>
+                </p>
+
+                <p><strong>Cell Communication and Homeostasis:</strong> During exercise, your body stays balanced by:
+                <ul>
+                    <li>Detecting low oxygen levels and making you breathe faster and your heart pump harder (hypoxia signaling).</li>
+                    <li>Releasing hormones to provide energy from stored fats and sugars (hormonal signaling).</li>
+                    <li>Coordinating muscle movements to prevent strain and maximize efficiency (neuromuscular signaling).</li>
+                </ul>
+                </p>
+
+                <p>These systems work together to help runners push their limits while staying safe and balanced.</p>
+            </div>
+        </section>
+
+        <!-- Key Sidebar -->
+        <div class="key-container" id="key">
+            <h3>Key</h3>
+            <ul>
+                <li><strong>▼:</strong> Toggle dropdown for more information</li>
+                <li><strong>(scientific terms in parentheses):</strong> Important words</li>
+            </ul>
+        </div>
+
+        <!-- Next Section Button -->
+        <div class="next-section-container">
+            <a class="next-section-btn" href="pathway.html">Next Section →</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Cell Communication and Homeostasis in Runners. Benjamin Earls.</p>
+        </div>
+    </footer>
+    <a href="#" id="backToTop">Top</a>
+    <script>
+        let openImageId = null;
+
+        function toggleSignal(id) {
+            if (openImageId && openImageId !== id) {
+                document.getElementById(openImageId).style.display = 'none';
+            }
+
+            const element = document.getElementById(id);
+            if (element.style.display === 'block') {
+                element.style.display = 'none';
+                openImageId = null;
+            } else {
+                element.style.display = 'block';
+                openImageId = id;
+            }
+        }
+
+        document.addEventListener('scroll', () => {
+            const heroBottom = document.querySelector('#hero').getBoundingClientRect().bottom;
+            const key = document.getElementById('key');
+
+            if (heroBottom < 0) {
+                key.style.display = 'block';
+            } else {
+                key.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

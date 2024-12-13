@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cell Communication - Signal Transduction</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .pathway-image {
+            display: none;
+            margin-top: 10px;
+            max-width: 100%;
+            border: 2px solid black;
+        }
+
+        .pathway-toggle {
+            cursor: pointer;
+            display: inline-block;
+            margin-left: 10px;
+            color: black;
+            text-decoration: none;
+        }
+
+        .pathway-container {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="secondary-header">
+        <div class="container">
+            <h1>Cell Communication and Homeostasis in Runners</h1>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pathway.html">Signal Transduction</a></li>
+                <li><a href="molecules.html">Key Molecules</a></li>
+                <li><a href="feedback.html">Feedback Mechanisms</a></li>
+                <li><a href="importance.html">Biological Importance</a></li>
+                <li><a href="review.html">Review Activity</a></li>
+                <li><a href="citations.html">Citations</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2>Signal Transduction Pathway</h2>
+                <p><strong>Overview:</strong> Signal transduction transforms a signal into varying cellular responses. The three main steps are:</p>
+
+                <div class="pathway-container">
+                    <p><strong>1. Reception (Ligand Binding):</strong> A signaling molecule (ligand) binds to a specific receptor on the cell surface or inside the cell. This changes the receptor’s shape and activates it.</p>
+                </div>
+
+                <div class="pathway-container">
+                    <p><strong>2. Transduction (Signal Cascade):</strong> The activated receptor triggers a chain reaction of events inside the cell. This often involves second messengers like cAMP or cGMP and protein kinases to amplify the signal.</p>
+                </div>
+
+                <div class="pathway-container">
+                    <p><strong>3. Response (Cellular Action):</strong> The cell responds to the signal by altering its behavior, such as activating enzymes, opening ion channels, or changing gene expression.</p>
+                </div>
+
+                <hr>
+                <div class="pathway-container">
+                    <p><strong>Diagram:</strong> <span class="pathway-toggle" onclick="togglePathway('combinedDiagram')">▼</span></p>
+                    <img id="combinedDiagram" src="signaltransduction.jpg" alt="Combined Pathways Diagram" class="pathway-image">
+                </div>
+                <hr>
+
+                <p><strong>Nitric Oxide Example in Runners:</strong><br>
+                During a run, endothelial cells in blood vessels sense increased physical activity and release nitric oxide (NO). NO diffuses into surrounding smooth muscle cells, activating guanylate cyclase (sGC). This enzyme increases cyclic GMP (cGMP) levels, causing the muscles to relax and the blood vessels to dilate. This enhanced blood flow delivers more oxygen and nutrients to working muscles, helping runners maintain endurance and reduce fatigue.</p>
+            </div>
+        </section>
+
+        <div class="next-section-container">
+            <a class="next-section-btn" href="molecules.html">Next Section →</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Cell Communication and Homeostasis in Runners. All rights reserved.</p>
+        </div>
+    </footer>
+    <a href="#" id="backToTop">Top</a>
+    <script>
+        let openPathwayId = null;
+
+        function togglePathway(id) {
+            if (openPathwayId && openPathwayId !== id) {
+                document.getElementById(openPathwayId).style.display = 'none';
+            }
+
+            const element = document.getElementById(id);
+            if (element.style.display === 'block') {
+                element.style.display = 'none';
+                openPathwayId = null;
+            } else {
+                element.style.display = 'block';
+                openPathwayId = id;
+            }
+        }
+    </script>
+</body>
+</html>
